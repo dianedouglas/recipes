@@ -18,6 +18,9 @@ class RecipesController < ApplicationController
       flash[:notice] = "Wrong wrong wrong. Try again."
       render('recipes/new.html.erb')
     end
+    @tag = Tag.new(params[:tag])
+    @recipe.tags << @tag
+    @tag.recipes << @recipe
   end
 
   def show
