@@ -1,0 +1,8 @@
+<h1>Edit <%= @tag.name %></h1>
+
+<form action="/tags/<%=@tag.id%>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="tag_name">Name</label>
+  <input id="tag_name" type="text" name="tag[name]" value="<%=@tag.name%>">
+  <button>Update</button>
+</form>
