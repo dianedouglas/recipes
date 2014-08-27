@@ -20,7 +20,6 @@ class RecipesController < ApplicationController
     end
     @tag = Tag.new(params[:tag])
     @recipe.tags << @tag
-    @tag.recipes << @recipe
   end
 
   def show
