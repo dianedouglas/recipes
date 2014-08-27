@@ -18,8 +18,11 @@ class RecipesController < ApplicationController
       flash[:notice] = "Wrong wrong wrong. Try again."
       render('recipes/new.html.erb')
     end
-    @tag = Tag.new(params[:tag])
-    @recipe.tags << @tag
+    input_tags = params[:tag]["name"].split(", ")
+    input_tags.each do |tag_name|
+      @tag = Tag.create({name: tag_name})
+      @recipe.tags << @tag
+    end
   end
 
   def show
