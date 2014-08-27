@@ -25,4 +25,20 @@ class RecipesController < ApplicationController
     render('recipes/show.html.erb')
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    render('recipes/edit.html.erb')
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(params[:recipe])
+      flash[:notice] = "Recipe updated."
+      redirect_to('/')
+    else
+      flash[:notice] = "Geez. Try again."
+      render('recipes/edit.html.erb')
+    end
+  end
+
 end
