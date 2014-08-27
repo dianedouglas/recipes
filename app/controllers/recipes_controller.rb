@@ -52,4 +52,11 @@ class RecipesController < ApplicationController
     redirect_to('/')
   end
 
+  def droptag
+    @recipe = Recipe.find(params[:id])
+    @tag = Tag.find(params[:tag_id])
+    @recipe.tags.delete(@tag)
+    redirect_to("/recipes/#{@recipe.id}")
+  end
+
 end

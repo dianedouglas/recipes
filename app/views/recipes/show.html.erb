@@ -3,6 +3,7 @@
 <p><%= @recipe.description %></p>
 <% @recipe.tags.each do |tag| %>
 <p><%= tag.name %></p>
+<button><a href='/recipes/<%= @recipe.id %>/droptag/<%= tag.id %>'>remove tag</a></button>
 <%end%>
 
 <p><a href="/recipes/<%= @recipe.id %>"
