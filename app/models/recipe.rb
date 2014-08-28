@@ -3,6 +3,7 @@ class Recipe < ActiveRecord::Base
   validates :name, :presence => true
   validates :description, :presence => true
   has_and_belongs_to_many :tags
+  has_many :ratings
 
   def self.search_by_tag(tags)
     @recipes = []

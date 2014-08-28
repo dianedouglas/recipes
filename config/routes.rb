@@ -11,7 +11,6 @@ match('/recipes/:id/edit', {:via => :get, :to => 'recipes#edit'})
 match('/recipes/:id', {:via => :delete, :to => 'recipes#destroy'})
 match('/recipes/:id/droptag/:tag_id', {:via => :get, :to => 'recipes#droptag'})
 
-
 match('/tags', {:via => :get, :to => 'tags#index'})
 match('/tags', {:via => :post, :to => 'tags#create'})
 match('/tags/new', {:via => :get, :to => 'tags#new'})

@@ -6,6 +6,8 @@ it {should validate_presence_of :name}
 
 it {should validate_presence_of :description}
 
+it {should have_many :ratings}
+
   it "should have many tags" do
     test_recipe = Recipe.create({name: 'Cookies', description: 'Put ingredients in and bake.'})
     test_tag = Tag.create({name: 'desert'})
