@@ -1,7 +1,11 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    if params[:query]
+      @recipes = Recipe.search_by_tag(params[:query])
+    else
+      @recipes = Recipe.all
+    end
     render('recipes/index.html.erb')
   end
 
