@@ -44,6 +44,16 @@ class RecipesController < ApplicationController
       flash[:notice] = "Geez. Try again."
       render('recipes/edit.html.erb')
     end
+    input_tags = params[:tag]["name"].split(", ")
+
+    @recipe.tags.each do |tag|
+      tag.destroy
+    end
+
+    input_tags.each do |tag_name|
+      @recipe.tags << Tag.create({name: tag_name})
+    end
+
   end
 
   def destroy
