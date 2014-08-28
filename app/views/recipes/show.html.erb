@@ -15,10 +15,9 @@
 
 <br>
 <br>
-<form action="/recipes/<%=@recipe.id%>" method="post">
-  <input name="_method" type="hidden" value="patch">
+<form action="/recipes/<%=@recipe.id%>/rate" method="post">
   <label>Rate This Recipe:</label>
-    <select id="section_menu" name="params[rating]">
+    <select id="section_menu" name="rating">
       <option value='1'>1</option>
       <option value='2'>2</option>
       <option value='3'>3</option>
@@ -28,5 +27,14 @@
   <button>Rate!</button>
 </form>
 
-<p>Average Rating:</p>
-<p><%= @recipe.rating %></p>
+<% @total_rating = 0 %>
+<% if @recipe.ratings.length > 0 %>
+  <% @recipe.ratings.each do |rating| %>
+    <% @total_rating += rating.rating %>
+  <% end %>
+  <p>Average Rating:</p>
+  <p><%= @total_rating / @recipe.ratings.length %></p>
+<% else %>
+  <p>Not Yet Rated.</p>
+<% end %>
+

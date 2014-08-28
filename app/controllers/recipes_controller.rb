@@ -57,11 +57,6 @@ class RecipesController < ApplicationController
     input_tags.each do |tag_name|
       @recipe.tags << Tag.create({name: tag_name})
     end
-
-    # input_rating = params[:rating]
-    # @recipe.ratings << input_rating
-    # @recipe.save
-
   end
 
   def destroy
