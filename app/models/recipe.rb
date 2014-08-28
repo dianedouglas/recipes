@@ -4,12 +4,17 @@ class Recipe < ActiveRecord::Base
   validates :description, :presence => true
   has_and_belongs_to_many :tags
 
-  def self.search_by_tag(tag)
+  def self.search_by_tag(tags)
     @recipes = []
-    Recipe.all.each do |recipe|
-      recipe.tags.each do |recipe_tag|
-        if recipe_tag.name == tag
-          @recipes << recipe
+    @search_tags = tags.split(" ")
+    @search_tags.each do |input_tag_name|
+      Recipe.all.each do |recipe|
+        recipe.tags.each do |recipe_tag|
+          if recipe_tag.name == input_tag_name
+            if !@recipes.include? recipe
+              @recipes << recipe
+            end
+          end
         end
       end
     end
